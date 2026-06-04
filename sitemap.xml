@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <!-- Página principal -->
+  <url>
+    <loc>https://futebolonline.site/</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://futebolonline.site/" />
+    <image:image>
+      <image:loc>https://futebolonline.site/img/og-cover.jpg</image:loc>
+      <image:title>Futebol Online – Jogos ao Vivo Grátis</image:title>
+    </image:image>
+  </url>
+</urlset>

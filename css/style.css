@@ -1,0 +1,592 @@
+/* ===========================
+   FUTEBOL ONLINE — MAIN STYLES
+   =========================== */
+
+:root {
+  --green:        #6dd400;
+  --green-dark:   #4caf00;
+  --green-glow:   rgba(109, 212, 0, 0.35);
+  --bg:           #080808;
+  --bg2:          #0e0e0e;
+  --bg3:          #161616;
+  --card-bg:      #111111;
+  --card-border:  #1e1e1e;
+  --text:         #f0f0f0;
+  --text-muted:   #888;
+  --text-dim:     #555;
+  --red:          #ff3b3b;
+  --gold:         #f5c518;
+  --radius:       12px;
+  --radius-lg:    18px;
+  --transition:   .22s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── HEADER ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,8,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.logo-link { display: flex; align-items: center; text-decoration: none; }
+
+.logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--green-glow));
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,59,59,.12);
+  border: 1px solid rgba(255,59,59,.3);
+  color: var(--red);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse-red 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.5; transform:scale(1.4); }
+}
+
+.hoje-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 56px 0 44px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 100% at 50% -20%, rgba(109,212,0,.10) 0%, transparent 70%),
+    linear-gradient(180deg, #0e0e0e 0%, var(--bg) 100%);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.hero-title .highlight {
+  color: var(--green);
+  text-shadow: 0 0 30px var(--green-glow);
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 15px;
+  letter-spacing: .5px;
+}
+
+/* ── MAIN ── */
+.main {
+  padding: 32px 20px 64px;
+}
+
+/* ── LOADING / ERROR / EMPTY ── */
+.loading-state,
+.error-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 20px;
+  color: var(--text-muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+.error-state .err-icon,
+.empty-state span { font-size: 40px; }
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--card-border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.btn-retry {
+  background: var(--green);
+  color: #000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  letter-spacing: .5px;
+  transition: var(--transition);
+}
+.btn-retry:hover { background: var(--green-dark); }
+
+/* ── JOGOS GRID ── */
+.jogos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ── CARD DO JOGO ── */
+.jogo-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  animation: fadeUp .4s ease both;
+}
+
+.jogo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--green-glow), transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.jogo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(109,212,0,.2);
+  border-color: rgba(109,212,0,.25);
+}
+
+.jogo-card:hover::before { opacity: 1; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Card Header – torneio + horário */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.card-torneio {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-torneio::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card-horario {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg3);
+  border: 1px solid var(--card-border);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Card Body – times */
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  gap: 10px;
+}
+
+.card-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-escudo-wrap {
+  width: 64px;
+  height: 64px;
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-escudo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.card-escudo-placeholder {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.card-nome {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: .3px;
+  line-height: 1.2;
+  color: var(--text);
+  text-transform: uppercase;
+  max-width: 100px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-vs {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  letter-spacing: 1px;
+}
+
+/* Card Footer – assistir */
+.card-footer {
+  padding: 0 16px 16px;
+}
+
+.btn-assistir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 0;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-assistir svg { width: 16px; height: 16px; fill: #000; }
+
+.jogo-card:hover .btn-assistir {
+  background: linear-gradient(135deg, #80e800 0%, #5cc800 100%);
+  box-shadow: 0 4px 20px rgba(109,212,0,.4);
+}
+
+/* ── MODAL PLAYER ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn .2s ease;
+}
+
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.modal-box {
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,.7);
+  animation: scaleIn .22s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes scaleIn {
+  from { opacity:0; transform:scale(.95); }
+  to   { opacity:1; transform:scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--card-border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-info { flex: 1; min-width: 0; }
+
+.modal-times {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-escudo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.modal-time-nome {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.modal-vs {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.torneio-tag {
+  background: rgba(109,212,0,.12);
+  color: var(--green);
+  border: 1px solid rgba(109,212,0,.25);
+}
+
+.horario-tag {
+  background: var(--bg3);
+  color: var(--text-muted);
+  border: 1px solid var(--card-border);
+}
+
+.modal-close {
+  background: var(--bg3);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(255,59,59,.15);
+  border-color: rgba(255,59,59,.3);
+  color: var(--red);
+}
+
+.player-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  flex: 1;
+}
+
+.player-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+#player-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--card-border);
+  padding: 32px 20px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  opacity: .7;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.footer-disclaimer {
+  font-size: 12px;
+  color: var(--text-dim);
+  max-width: 480px;
+  opacity: .7;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .jogos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-times { gap: 7px; }
+  .modal-time-nome { font-size: 15px; }
+  .modal-escudo { width: 28px; height: 28px; }
+
+  .hero-title { font-size: 42px; }
+
+  .card-body { padding: 16px 12px; }
+  .card-escudo-wrap { width: 52px; height: 52px; }
+  .card-escudo { width: 38px; height: 38px; }
+  .card-nome { font-size: 13px; max-width: 80px; }
+}

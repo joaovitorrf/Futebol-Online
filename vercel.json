@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/jogo/:slug",
+      "destination": "/jogo/index.html"
+    }
+  ]
+}

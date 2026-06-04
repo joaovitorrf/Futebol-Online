@@ -1,0 +1,14 @@
+# robots.txt — futebolonline.site
+# Gerado para máxima indexação SEO
+
+User-agent: *
+Allow: /
+
+# Bloqueia apenas arquivos internos desnecessários
+Disallow: /js/config.js
+
+# Sitemaps
+Sitemap: https://futebolonline.site/sitemap.xml
+
+# Crawl delay (respeitoso com bots)
+Crawl-delay: 1

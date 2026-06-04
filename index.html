@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO PRIMARY ===== -->
+  <title>Futebol Online – Assista aos Jogos de Hoje Ao Vivo e Grátis</title>
+  <meta name="description" content="Futebol Online: assista aos jogos de hoje ao vivo e de graça. Transmissões em HD de todos os campeonatos – Brasileirão, Champions League, Copa do Brasil e mais." />
+  <meta name="keywords" content="futebol online, futebol ao vivo, jogos de hoje, assistir futebol grátis, brasileirão ao vivo, champions league ao vivo, copa do brasil ao vivo, futebol hd, transmissão ao vivo futebol, live futebol" />
+  <meta name="author" content="Futebol Online" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://futebolonline.site/" />
+
+  <!-- ===== OPEN GRAPH ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Futebol Online – Assista aos Jogos de Hoje Ao Vivo e Grátis" />
+  <meta property="og:description" content="Futebol Online: transmissões ao vivo dos principais campeonatos do mundo. Assista grátis em HD agora mesmo!" />
+  <meta property="og:url" content="https://futebolonline.site/" />
+  <meta property="og:site_name" content="Futebol Online" />
+  <meta property="og:image" content="https://futebolonline.site/img/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Futebol Online – Jogos Ao Vivo Grátis" />
+  <meta name="twitter:description" content="Assista aos jogos de hoje ao vivo e de graça. Brasileirão, Champions, Copa e mais!" />
+  <meta name="twitter:image" content="https://futebolonline.site/img/og-cover.jpg" />
+
+  <!-- ===== FAVICON (logo como favicon) ===== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png" />
+  <link rel="apple-touch-icon" href="img/logo.png" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ===== SCHEMA.ORG ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Futebol Online",
+    "url": "https://futebolonline.site",
+    "description": "Assista aos jogos de futebol ao vivo e de graça – Brasileirão, Champions League, Copa do Brasil e mais.",
+    "inLanguage": "pt-BR",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://futebolonline.site/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo-link" aria-label="Futebol Online - Início">
+        <img src="img/logo.png" alt="Futebol Online Logo" class="logo" width="180" height="60" />
+      </a>
+      <div class="header-info">
+        <span class="live-badge">
+          <span class="live-dot"></span>
+          AO VIVO
+        </span>
+        <span class="hoje-label" id="dataHoje"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title">Jogos de <span class="highlight">Hoje</span></h1>
+      <p class="hero-sub">Transmissões ao vivo grátis • Todos os campeonatos</p>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main container" id="main-content">
+    <div id="loading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Carregando jogos...</p>
+    </div>
+    <div id="erro" class="error-state" style="display:none">
+      <span class="err-icon">⚠️</span>
+      <p>Não foi possível carregar os jogos. Tente novamente em breve.</p>
+      <button onclick="carregarJogos()" class="btn-retry">Tentar novamente</button>
+    </div>
+    <div id="sem-jogos" class="empty-state" style="display:none">
+      <span>⚽</span>
+      <p>Nenhum jogo encontrado para hoje. Volte mais tarde!</p>
+    </div>
+    <div id="jogos-grid" class="jogos-grid" style="display:none"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="img/logo.png" alt="Futebol Online" class="footer-logo" />
+      <p class="footer-copy">© <span id="ano"></span> Futebol Online · Todos os direitos reservados</p>
+      <p class="footer-disclaimer">Este site agrega links públicos de transmissões disponíveis na internet.</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
