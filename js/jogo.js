@@ -190,23 +190,20 @@ function fecharInterstitial() {
 /* ── VIDEO SLIDER a cada 6 minutos ── */
 let videoSliderTimer = null;
 
+function dispararVideoSlider() {
+  const old = document.getElementById('video-slider-script');
+  if (old) old.remove();
+  const s = document.createElement('script');
+  s.id = 'video-slider-script';
+  s.src = "//sophisticatedpin.com/bwXDVPs.dWGplq0kYqWjcx/OeJmW9LuPZrUIl-kIPvT/cxx/MwTRII1yMvzUMPt-NWzDEcx/M/jvUpzRNvwM";
+  s.async = true;
+  s.referrerPolicy = 'no-referrer-when-downgrade';
+  document.body.appendChild(s);
+}
+
 function iniciarVideoSlider() {
-  const SEIS_MINUTOS = 6 * 60 * 1000;
-  videoSliderTimer = setInterval(() => {
-    const el = document.getElementById('ad-video-slider');
-    if (el) {
-      el.style.display = 'block';
-      // Recarrega o script do ad para re-exibir
-      const old = document.getElementById('video-slider-script');
-      if (old) old.remove();
-      const s = document.createElement('script');
-      s.id = 'video-slider-script';
-      s.src = "//sophisticatedpin.com/bwXDVPs.dWGplq0kYqWjcx/OeJmW9LuPZrUIl-kIPvT/cxx/MwTRII1yMvzUMPt-NWzDEcx/M/jvUpzRNvwM";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      document.body.appendChild(s);
-    }
-  }, SEIS_MINUTOS);
+  dispararVideoSlider(); // roda imediatamente ao abrir a página
+  videoSliderTimer = setInterval(dispararVideoSlider, 6 * 60 * 1000); // e a cada 6 min
 }
 
 /* ── POPUNDER (só PC) ── */
