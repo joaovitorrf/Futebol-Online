@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO dinâmico via JS -->
   <title id="page-title">Assistir Ao Vivo – Futebol Online</title>
   <meta name="description" id="page-desc" content="Assista ao jogo ao vivo e de graça no Futebol Online. Transmissão em HD." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" id="page-canonical" href="https://futebolonline.site/" />
 
-  <!-- Open Graph dinâmico -->
   <meta property="og:type" content="video.other" />
   <meta property="og:site_name" content="Futebol Online" />
   <meta property="og:title" id="og-title" content="Assistir Ao Vivo – Futebol Online" />
@@ -18,29 +16,122 @@
   <meta property="og:url" id="og-url" content="https://futebolonline.site/" />
   <meta property="og:image" content="https://futebolonline.site/img/og-cover.jpg" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" id="tw-title" content="Assistir Ao Vivo – Futebol Online" />
   <meta name="twitter:description" id="tw-desc" content="Assista ao jogo ao vivo e de graça no Futebol Online." />
   <meta name="twitter:image" content="https://futebolonline.site/img/og-cover.jpg" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../img/logo.png" />
   <link rel="apple-touch-icon" href="../img/logo.png" />
   <meta name="theme-color" content="#0a0a0a" />
 
-  <!-- Schema.org será injetado via JS -->
   <script id="schema-jogo" type="application/ld+json">{}</script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/jogo.css" />
+
+  <style>
+    /* ── INTERSTITIAL (banner central ao carregar canal) ── */
+    #ad-interstitial {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #ad-interstitial .ad-inter-box {
+      position: relative;
+      background: #111;
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 680px;
+      width: 94vw;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    }
+    #ad-interstitial .ad-inter-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      background: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 32px;
+      text-align: center;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    #ad-interstitial .ad-inter-label {
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    /* ── BANNER TOPO DA PÁGINA DE JOGO ── */
+    .ad-banner-topo {
+      width: 100%;
+      text-align: center;
+      padding: 8px 0 4px;
+      background: #0a0a0a;
+    }
+    .ad-banner-topo span {
+      display: block;
+      font-size: 10px;
+      color: #555;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    /* ── VIDEO SLIDER (aparece na página do jogo a cada 6min) ── */
+    #ad-video-slider { display: block; }
+  </style>
 </head>
 <body class="jogo-page">
+
+  <!-- ══ INTERSTITIAL: aparece ao carregar o canal ══ -->
+  <div id="ad-interstitial">
+    <div class="ad-inter-box">
+      <button class="ad-inter-close" onclick="fecharInterstitial()" aria-label="Fechar anúncio">✕</button>
+      <div class="ad-inter-label">Publicidade</div>
+      <!-- Banner ad -->
+      <script>
+      (function(nvxaz){
+        var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];
+        s.settings=nvxaz||{};
+        s.src="//sophisticatedpin.com/bJXVVGs.diGjlx0JYHWFcm/Te/mv9pugZGUblOkyPrTcc/xoMfT/Iw1ON/DQkStONLzcE/x/Myj_UK1VMjwf";
+        s.async=true;s.referrerPolicy='no-referrer-when-downgrade';
+        l.parentNode.insertBefore(s,l);
+      })({})
+      </script>
+    </div>
+  </div>
+
+  <!-- ══ VIDEO SLIDER (reativado a cada 6 min pelo jogo.js) ══ -->
+  <div id="ad-video-slider">
+    <script id="video-slider-script">
+    (function(nvxaz){
+      var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];
+      s.settings=nvxaz||{};
+      s.src="//sophisticatedpin.com/bwXDVPs.dWGplq0kYqWjcx/OeJmW9LuPZrUIl-kIPvT/cxx/MwTRII1yMvzUMPt-NWzDEcx/M/jvUpzRNvwM";
+      s.async=true;s.referrerPolicy='no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s,l);
+    })({})
+    </script>
+  </div>
 
   <!-- HEADER -->
   <header class="header">
@@ -53,6 +144,20 @@
       </a>
     </div>
   </header>
+
+  <!-- BANNER TOPO (abaixo do header) -->
+  <div class="ad-banner-topo">
+    <span>Publicidade</span>
+    <script>
+    (function(nvxaz){
+      var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];
+      s.settings=nvxaz||{};
+      s.src="//sophisticatedpin.com/bJXVVGs.diGjlx0JYHWFcm/Te/mv9pugZGUblOkyPrTcc/xoMfT/Iw1ON/DQkStONLzcE/x/Myj_UK1VMjwf";
+      s.async=true;s.referrerPolicy='no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s,l);
+    })({})
+    </script>
+  </div>
 
   <!-- LOADING STATE -->
   <div id="page-loading" class="page-loading">
@@ -71,7 +176,6 @@
   <!-- CONTEÚDO DO JOGO -->
   <main id="jogo-content" class="jogo-content" style="display:none">
 
-    <!-- BREADCRUMB (SEO) -->
     <div class="breadcrumb container">
       <a href="/">Início</a>
       <span>›</span>
@@ -80,7 +184,6 @@
       <span id="bc-jogo"></span>
     </div>
 
-    <!-- LAYOUT PRINCIPAL: player + info -->
     <div class="jogo-layout container">
 
       <!-- PLAYER -->
@@ -102,7 +205,7 @@
           ></iframe>
         </div>
 
-        <!-- TIMES ABAIXO DO PLAYER (mobile) -->
+        <!-- TIMES ABAIXO DO PLAYER -->
         <div class="times-bar">
           <div class="time-bar-item">
             <img id="escudo-a-bar" src="" alt="" class="escudo-bar" />
@@ -116,12 +219,25 @@
             <img id="escudo-b-bar" src="" alt="" class="escudo-bar" />
           </div>
         </div>
+
+        <!-- BANNER ABAIXO DO PLAYER -->
+        <div style="text-align:center;padding:12px 0 4px">
+          <span style="display:block;font-size:10px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Publicidade</span>
+          <script>
+          (function(nvxaz){
+            var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];
+            s.settings=nvxaz||{};
+            s.src="//sophisticatedpin.com/bJXVVGs.diGjlx0JYHWFcm/Te/mv9pugZGUblOkyPrTcc/xoMfT/Iw1ON/DQkStONLzcE/x/Myj_UK1VMjwf";
+            s.async=true;s.referrerPolicy='no-referrer-when-downgrade';
+            l.parentNode.insertBefore(s,l);
+          })({})
+          </script>
+        </div>
       </section>
 
       <!-- INFO LATERAL -->
       <aside class="jogo-info">
 
-        <!-- Cabeçalho do confronto -->
         <div class="confronto-card">
           <div class="confronto-torneio">
             <span class="dot-green"></span>
@@ -173,7 +289,6 @@
           </div>
         </div>
 
-        <!-- Dica ao vivo -->
         <div class="dica-card">
           <span class="live-badge">
             <span class="live-dot"></span>
@@ -182,7 +297,20 @@
           <p>Assista gratuitamente em HD. Se o player não carregar, atualize a página.</p>
         </div>
 
-        <!-- Compartilhar -->
+        <!-- BANNER NA SIDEBAR -->
+        <div style="text-align:center;padding:8px 0">
+          <span style="display:block;font-size:10px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Publicidade</span>
+          <script>
+          (function(nvxaz){
+            var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];
+            s.settings=nvxaz||{};
+            s.src="//sophisticatedpin.com/bJXVVGs.diGjlx0JYHWFcm/Te/mv9pugZGUblOkyPrTcc/xoMfT/Iw1ON/DQkStONLzcE/x/Myj_UK1VMjwf";
+            s.async=true;s.referrerPolicy='no-referrer-when-downgrade';
+            l.parentNode.insertBefore(s,l);
+          })({})
+          </script>
+        </div>
+
         <div class="share-card">
           <p class="share-title">Compartilhar jogo</p>
           <div class="share-btns">
@@ -200,7 +328,6 @@
       </aside>
     </div>
 
-    <!-- SEO TEXT (visível pra Google, discreto pra usuário) -->
     <section class="seo-section container">
       <div class="seo-text" id="seo-text"></div>
     </section>
